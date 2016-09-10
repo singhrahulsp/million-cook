@@ -73,7 +73,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 	}
 
 	@Override
-	public User getUserByUserId(Integer userId) throws Exception {
+	public User getUserByUserId(Long userId) throws Exception {
 		return authenticationDao.getUserByUserId(userId);
 	}
 

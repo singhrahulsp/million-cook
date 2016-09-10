@@ -10,7 +10,7 @@ public interface AuthenticationService {
 
 	public String registerNewUser(User newUser) throws Exception;
 
-	public User getUserByUserId(Integer userId) throws Exception;
+	public User getUserByUserId(Long userId) throws Exception;
 
 	public String updateNewAddress(UserAddress address) throws Exception;
 

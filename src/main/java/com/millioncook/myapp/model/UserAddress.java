@@ -21,7 +21,7 @@ public class UserAddress {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Address_id")
-	private Integer address_id;
+	private Long address_id;
 	
 	private String address_line1;
 	private String address_line2;
@@ -31,12 +31,12 @@ public class UserAddress {
 	private Integer country_id;
 	private Integer area_id;
 	private String zip_code;
-	private Integer created_by;
+	private Long created_by;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
 	private Date created_date;
 	
-	private Integer modified_by;
+	private Long modified_by;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
 	private Date modified_date;
@@ -47,11 +47,11 @@ public class UserAddress {
 	@JsonBackReference
 	private User user;
 
-	public Integer getAddress_id() {
+	public Long getAddress_id() {
 		return address_id;
 	}
 
-	public void setAddress_id(Integer address_id) {
+	public void setAddress_id(Long address_id) {
 		this.address_id = address_id;
 	}
 
@@ -119,11 +119,11 @@ public class UserAddress {
 		this.zip_code = zip_code;
 	}
 
-	public Integer getCreated_by() {
+	public Long getCreated_by() {
 		return created_by;
 	}
 
-	public void setCreated_by(Integer created_by) {
+	public void setCreated_by(Long created_by) {
 		this.created_by = created_by;
 	}
 
@@ -135,11 +135,11 @@ public class UserAddress {
 		this.created_date = created_date;
 	}
 
-	public Integer getModified_by() {
+	public Long getModified_by() {
 		return modified_by;
 	}
 
-	public void setModified_by(Integer modified_by) {
+	public void setModified_by(Long modified_by) {
 		this.modified_by = modified_by;
 	}
 

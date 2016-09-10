@@ -85,7 +85,7 @@ public class UserAuthenicateController {
 
 	@RequestMapping(value = "/update_detail/{userId}")
 	public HashMap<Object, Object> updateUserDetails(@RequestBody UserDetail userdetail,
-			@PathVariable("userId") Integer userId) {
+			@PathVariable("userId") Long userId) {
 		HelperClass helper = null;
 		HashMap<Object, Object> hash = null;
 		String result = "";
@@ -120,8 +120,7 @@ public class UserAuthenicateController {
 	}
 
 	@RequestMapping(value = "/update_address/{userId}")
-	public HashMap<Object, Object> updateUserAddress(@RequestBody UserAddress userAddress,
-			@PathVariable("userId") Integer userId) {
+	public HashMap<Object, Object> updateUserAddress(@RequestBody UserAddress userAddress, @PathVariable("userId") Long userId) {
 		HelperClass helper = null;
 		HashMap<Object, Object> map = null;
 		User user = null;

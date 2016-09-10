@@ -17,13 +17,13 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name = "mst_USER")
+@Table(name = "mst_User")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "User_id")
-	private Integer user_id;
+	private Long user_id;
 
 	@Column(name = "Mobile_no")
 	private String mobile_no;
@@ -45,13 +45,13 @@ public class User {
 
 	private String user_type;
 
-	private Integer created_by;
+	private Long created_by;
 
 	@Column(name = "Created_Date")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
 	private Date created_date;
 
-	private Integer modified_By;
+	private Long modified_By;
 
 	@Column(name = "Modified_Date")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
@@ -60,22 +60,21 @@ public class User {
 	@Column(name = "Is_Active")
 	private Boolean is_active;
 
-	@OneToOne(cascade = CascadeType.ALL,mappedBy="user", fetch=FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
 	private UserDetail user_details;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="user", fetch=FetchType.LAZY)
-	private List<UserAddress> user_address;
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+	private List<UserAddress> user_address;
 
 	public String getMobile_no() {
 		return mobile_no;
 	}
 
-	public Integer getUser_id() {
+	public Long getUser_id() {
 		return user_id;
 	}
 
-	public void setUser_id(Integer user_id) {
+	public void setUser_id(Long user_id) {
 		this.user_id = user_id;
 	}
 
@@ -163,19 +162,19 @@ public class User {
 		this.user_type = user_type;
 	}
 
-	public Integer getCreated_by() {
+	public Long getCreated_by() {
 		return created_by;
 	}
 
-	public void setCreated_by(Integer created_by) {
+	public void setCreated_by(Long created_by) {
 		this.created_by = created_by;
 	}
 
-	public Integer getModified_By() {
+	public Long getModified_By() {
 		return modified_By;
 	}
 
-	public void setModified_By(Integer modified_By) {
+	public void setModified_By(Long modified_By) {
 		this.modified_By = modified_By;
 	}
 

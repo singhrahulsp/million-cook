@@ -88,7 +88,7 @@ public class AuthenticationDaoImpl implements AuthenticationDao {
 	}
 
 	@Override
-	public User getUserByUserId(Integer userId) throws Exception{
+	public User getUserByUserId(Long userId) throws Exception{
 		User user = null;
 		try {
 			Session session = sessionFactory.openSession();

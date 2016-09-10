@@ -21,31 +21,31 @@ public class UserDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "User_Detail_id")
-	private Integer user_detail_id;
-	
+	private Long user_detail_id;
+
 	private String dob;
 	private String occupation;
 	private Integer userImage_ID;
-	private Integer created_by;
-	
+	private Long created_by;
+
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
 	private Date created_date;
-	
-	private Integer modified_by;
-	
+
+	private Long modified_by;
+
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
 	private Date modified_date;
-	
+
 	@OneToOne
 	@JoinColumn(name = "user_id")
 	@JsonBackReference
 	private User user;
 
-	public Integer getUser_detail_id() {
+	public Long getUser_detail_id() {
 		return user_detail_id;
 	}
 
-	public void setUser_detail_id(Integer user_detail_id) {
+	public void setUser_detail_id(Long user_detail_id) {
 		this.user_detail_id = user_detail_id;
 	}
 
@@ -73,11 +73,11 @@ public class UserDetail {
 		this.userImage_ID = userImage_ID;
 	}
 
-	public Integer getCreated_by() {
+	public Long getCreated_by() {
 		return created_by;
 	}
 
-	public void setCreated_by(Integer created_by) {
+	public void setCreated_by(Long created_by) {
 		this.created_by = created_by;
 	}
 
@@ -89,11 +89,11 @@ public class UserDetail {
 		this.created_date = created_date;
 	}
 
-	public Integer getModified_by() {
+	public Long getModified_by() {
 		return modified_by;
 	}
 
-	public void setModified_by(Integer modified_by) {
+	public void setModified_by(Long modified_by) {
 		this.modified_by = modified_by;
 	}
 
