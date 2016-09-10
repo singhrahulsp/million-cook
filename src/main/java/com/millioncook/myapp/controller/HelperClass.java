@@ -12,7 +12,7 @@ public class HelperClass {
 
 		String dateStr = "";
 		Date d = null;
-		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		Date date = new Date();
 		System.out.println(dateFormat.format(date)); // 2014/08/06 15:59:48
 		dateStr = dateFormat.format(date);
@@ -23,6 +23,20 @@ public class HelperClass {
 		}
 		return d;
 	}
+	
+	
+	public Date getFormattedDate(String strDate) throws Exception{
+		Date date = null;
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			date = dateFormat.parse(strDate);
+		} catch (ParseException e) {
+			throw e;
+		}
+		return date;
+	}
+	
+	
 
 	public String getEncryptedPassword(String passwordToHash) throws Exception {
 		String generatedPassword = null;

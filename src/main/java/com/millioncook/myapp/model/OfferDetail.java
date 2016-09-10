@@ -1,13 +1,22 @@
 package com.millioncook.myapp.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "offer_detail")
@@ -15,9 +24,9 @@ public class OfferDetail {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "detail_id")
-	private Long detail_id;
-	private Long offer_id;
+	@Column(name = "Offer_detail_id")
+	private Long offer_detail_id;
+
 	private Integer category_id;
 	private Integer sub_category_id;
 	private String food_type;
@@ -29,25 +38,30 @@ public class OfferDetail {
 	private String description;
 	private String status_id;
 	private Long created_by;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm" , timezone = "Asia/Kolkata")
 	private Date created_date;
 	private Long modified_by;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm" , timezone = "Asia/Kolkata")
 	private Date modified_date;
 	private Boolean is_active;
 
-	public Long getDetail_id() {
-		return detail_id;
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "Offer_id")
+	@JsonBackReference
+	private MstOffer offer;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	//@JoinColumn(name = "offer_detail_id")
+	private List<OfferItemMenu> offer_item;
+
+	public Long getOffer_detail_id() {
+		return offer_detail_id;
 	}
 
-	public void setDetail_id(Long detail_id) {
-		this.detail_id = detail_id;
-	}
-
-	public Long getOffer_id() {
-		return offer_id;
-	}
-
-	public void setOffer_id(Long offer_id) {
-		this.offer_id = offer_id;
+	public void setOffer_detail_id(Long offer_detail_id) {
+		this.offer_detail_id = offer_detail_id;
 	}
 
 	public Integer getCategory_id() {
@@ -160,6 +174,22 @@ public class OfferDetail {
 
 	public void setIs_active(Boolean is_active) {
 		this.is_active = is_active;
+	}
+
+	public MstOffer getOffer() {
+		return offer;
+	}
+
+	public void setOffer(MstOffer offer) {
+		this.offer = offer;
+	}
+
+	public List<OfferItemMenu> getOffer_item() {
+		return offer_item;
+	}
+
+	public void setOffer_item(List<OfferItemMenu> offer_item) {
+		this.offer_item = offer_item;
 	}
 
 }

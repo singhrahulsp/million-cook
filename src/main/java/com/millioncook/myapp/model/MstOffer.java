@@ -1,13 +1,20 @@
 package com.millioncook.myapp.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "mst_offer")
@@ -21,16 +28,25 @@ public class MstOffer {
 	private Long User_id;
 
 	private Integer user_area;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "Asia/Kolkata")
 	private Date offer_date;
 	private String offer_time;
 	private Integer offer_qty;
 	private Integer offer_price;
 	private Character status;
 	private Long created_by;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm" , timezone = "Asia/Kolkata")
 	private Date created_date;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm" , timezone = "Asia/Kolkata")
 	private Date modified_date;
 	private Long modified_by;
 	private Boolean is_active;
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	private List<OfferDetail> offer_detail;
 
 	public Long getOffer_id() {
 		return offer_id;
@@ -134,6 +150,14 @@ public class MstOffer {
 
 	public void setIs_active(Boolean is_active) {
 		this.is_active = is_active;
+	}
+
+	public List<OfferDetail> getOffer_detail() {
+		return offer_detail;
+	}
+
+	public void setOffer_detail(List<OfferDetail> offer_detail) {
+		this.offer_detail = offer_detail;
 	}
 
 }

@@ -12,7 +12,7 @@ public class MainClass {
 		String dateStr = "";
 		
 		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-		Date date = new Date();
+		Date date = new Date(1473532200000L);
 		dateStr = dateFormat.format(date);
 		try {
 			System.out.println(dateFormat.parse(dateStr));

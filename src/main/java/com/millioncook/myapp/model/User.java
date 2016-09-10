@@ -48,13 +48,13 @@ public class User {
 	private Long created_by;
 
 	@Column(name = "Created_Date")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm", timezone = "Asia/Kolkata")
 	private Date created_date;
 
 	private Long modified_By;
 
 	@Column(name = "Modified_Date")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm", timezone = "Asia/Kolkata")
 	private Date modified_date;
 
 	@Column(name = "Is_Active")
