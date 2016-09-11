@@ -48,22 +48,25 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
 			if (newUser.getUser_id() != null && newUser.getUser_id() != 0) {
 				newUser.setModified_date(date);
-			}
-			
-			if (newUser.getMobile_no() == "" || newUser.getMobile_no() == null || newUser.getMobile_no().length() != 10) {
-				msg = "Please enter valid Mobile no";
-				throw new Exception(msg);
+				authenticationDao.registerNewUser(newUser);
 			} else {
-				regUser = authenticationDao.checkForRegisteredUser(newUser);
-				if (regUser != null) {
-					if (regUser.getMobile_no().equals(newUser.getMobile_no())) {
-						msg = "Mobile no is already registered";
-					} else if (regUser.getEmail_id().equals(newUser.getEmail_id())) {
-						msg = "Email id is already registered";
-					}
+
+				if (newUser.getMobile_no() == "" || newUser.getMobile_no() == null
+						|| newUser.getMobile_no().length() != 10) {
+					msg = "Please enter valid Mobile no";
 					throw new Exception(msg);
 				} else {
-					authenticationDao.registerNewUser(newUser);
+					regUser = authenticationDao.checkForRegisteredUser(newUser);
+					if (regUser != null) {
+						if (regUser.getMobile_no().equals(newUser.getMobile_no())) {
+							msg = "Mobile no is already registered";
+						} else if (regUser.getEmail_id().equals(newUser.getEmail_id())) {
+							msg = "Email id is already registered";
+						}
+						throw new Exception(msg);
+					} else {
+						authenticationDao.registerNewUser(newUser);
+					}
 				}
 			}
 		} catch (Exception e) {

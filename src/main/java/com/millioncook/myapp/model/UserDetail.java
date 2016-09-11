@@ -23,12 +23,16 @@ public class UserDetail {
 	@Column(name = "User_Detail_id")
 	private Long user_detail_id;
 
+	@Column(updatable=false)
 	private String dob;
 	private String occupation;
 	private Integer userImage_ID;
+	
+	@Column(updatable=false)
 	private Long created_by;
 
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm", timezone = "Asia/Kolkata")
+	@Column(updatable=false)
 	private Date created_date;
 
 	private Long modified_by;

@@ -46,7 +46,7 @@ public class OfferFoodController {
 			map.put("status", status);
 			map.put("message", msg);
 		} catch (Exception e) {
-			msg = e.getCause().getMessage();
+			msg = e.getMessage();
 			map.put("message", msg);
 			map.put("status", status);
 		}

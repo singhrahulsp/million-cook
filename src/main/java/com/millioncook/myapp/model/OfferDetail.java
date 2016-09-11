@@ -35,8 +35,10 @@ public class OfferDetail {
 	private String delivery_option;
 	private String description;
 	private String status_id;
+	@Column(updatable=false)
 	private Long created_by;
 	
+	@Column(updatable=false)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm" , timezone = "Asia/Kolkata")
 	private Date created_date;
 	private Long modified_by;

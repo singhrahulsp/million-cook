@@ -43,10 +43,10 @@ public class UserAuthenicateController {
 			if (user != null) {
 				status = "success";
 				obj.put("status", "success");
-				obj.put("msg", "");
+				obj.put("message", "");
 				obj.put("user", user);
 			} else {
-				msg = "Mobile no is not registered";
+				msg = "Mobile no or password is incorrect";
 				obj.put("message", msg);
 				obj.put("status", status);
 			}
@@ -76,9 +76,10 @@ public class UserAuthenicateController {
 			hashmap.put("message", msg);
 
 		} catch (Exception e) {
-			msg = e.getCause().getMessage();
+			msg = e.getMessage();
+			hashmap.put("status", status);
 			hashmap.put("message", msg);
-			logger.error("message ", e.getCause().getMessage());
+			logger.error("message ", msg);
 		}
 		return hashmap;
 	}
@@ -111,7 +112,7 @@ public class UserAuthenicateController {
 			hash.put("message", result);
 			hash.put("status", status);
 		} catch (Exception e) {
-			result = e.getCause().getMessage();
+			result = e.getMessage();
 			hash.put("status", status);
 			hash.put("message", result);
 			logger.error("message ", e.getCause().getMessage());
@@ -150,7 +151,7 @@ public class UserAuthenicateController {
 			map.put("message", msg);
 
 		} catch (Exception e) {
-			msg = e.getCause().getMessage();
+			msg = e.getMessage();
 			map.put("status", status);
 			map.put("message", msg);
 			logger.error("message ", e.getCause().getMessage());

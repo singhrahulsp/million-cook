@@ -25,29 +25,32 @@ public class User {
 	@Column(name = "User_id")
 	private Long user_id;
 
-	@Column(name = "Mobile_no")
+	@Column(name = "Mobile_no", updatable=false)
 	private String mobile_no;
 
-	@Column(name = "Email_ID")
+	@Column(name = "Email_ID", updatable=false)
 	private String email_id;
 
-	@Column(name = "Facebook_token")
+	@Column(name = "Facebook_token", updatable=false)
 	private String facebook_token;
 
-	@Column(name = "Google_token")
+	@Column(name = "Google_token", updatable=false)
 	private String google_token;
 
 	@Column(name = "Password")
 	private String password;
 
+	@Column(updatable=false)
 	private String first_name;
+	@Column(updatable=false)
 	private String last_name;
 
 	private String user_type;
 
+	@Column(updatable=false)
 	private Long created_by;
 
-	@Column(name = "Created_Date")
+	@Column(name = "Created_Date", updatable=false)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm", timezone = "Asia/Kolkata")
 	private Date created_date;
 
@@ -57,7 +60,7 @@ public class User {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm", timezone = "Asia/Kolkata")
 	private Date modified_date;
 
-	@Column(name = "Is_Active")
+	@Column(name = "Is_Active", updatable=false)
 	private Boolean is_active;
 
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)

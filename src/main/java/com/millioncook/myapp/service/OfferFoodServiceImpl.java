@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.millioncook.myapp.controller.HelperClass;
 import com.millioncook.myapp.dao.OfferFoodDao;
 import com.millioncook.myapp.model.MstOffer;
+import com.millioncook.myapp.model.OfferDetail;
 
 @Service
 public class OfferFoodServiceImpl implements OfferFoodService {
@@ -45,7 +46,21 @@ public class OfferFoodServiceImpl implements OfferFoodService {
 
 	@Override
 	public void saveFoodOfferByUserId(MstOffer offer) throws Exception{
+		HelperClass helper = null;
+		Date date = null;
 		try {
+			helper = new HelperClass();
+			date = helper.getCurrentTimeStamp();
+			if (offer.getOffer_id() != null && offer.getOffer_id() != 0){
+				offer.setModified_date(date);
+			}
+			if (offer.getOffer_detail() != null){
+				for (OfferDetail detail : offer.getOffer_detail()){
+					if (detail.getOffer_detail_id() != null && detail.getOffer_detail_id() != 0){
+						detail.setModified_date(date);
+					}
+				}
+			}
 			offerFoodDao.saveFoodOfferByUserId(offer);
 		} catch (Exception e) {
 			throw e;

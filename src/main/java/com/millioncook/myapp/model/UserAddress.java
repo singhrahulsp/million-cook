@@ -31,9 +31,12 @@ public class UserAddress {
 	private Integer country_id;
 	private Integer area_id;
 	private String zip_code;
+	
+	@Column(updatable=false)
 	private Long created_by;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm", timezone = "Asia/Kolkata")
+	@Column(updatable=false)
 	private Date created_date;
 	
 	private Long modified_by;

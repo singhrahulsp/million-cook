@@ -25,6 +25,7 @@ public class MstOffer {
 	@Column(name = "Offer_id")
 	private Long offer_id;
 
+	@Column(updatable=false)
 	private Long User_id;
 
 	private Integer user_area;
@@ -35,8 +36,10 @@ public class MstOffer {
 	private Integer offer_qty;
 	private Integer offer_price;
 	private Character status;
+	@Column(updatable= false)
 	private Long created_by;
 	
+	@Column(updatable=false)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm" , timezone = "Asia/Kolkata")
 	private Date created_date;
 	

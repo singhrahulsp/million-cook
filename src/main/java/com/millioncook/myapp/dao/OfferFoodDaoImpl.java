@@ -24,7 +24,7 @@ public class OfferFoodDaoImpl implements OfferFoodDao{
 		List<MstOffer> offer = null;
 		Session session = null;
 		try{
-			 session = sessionFactory.getCurrentSession();
+			 session = sessionFactory.openSession();
 			 Transaction tx = session.beginTransaction();
 			String qry = "from MstOffer where user_id=:userId and offer_date =:date";
 			offer = (List<MstOffer>) session.createQuery(qry).setParameter("userId", id).setParameter("date", date).getResultList();
@@ -38,9 +38,10 @@ public class OfferFoodDaoImpl implements OfferFoodDao{
 	@Override
 	public void saveFoodOfferByUserId(MstOffer offer) throws Exception{
 		try {
-			Session session = sessionFactory.getCurrentSession();
+			Session session = sessionFactory.openSession();
 			Transaction tx = session.beginTransaction();
 			session.saveOrUpdate(offer);
+			session.flush();
 			tx.commit();
 			session.close();
 		} catch (Exception e) {
