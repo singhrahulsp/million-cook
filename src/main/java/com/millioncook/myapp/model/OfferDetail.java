@@ -11,11 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -47,13 +45,13 @@ public class OfferDetail {
 	private Date modified_date;
 	private Boolean is_active;
 
-	@ManyToOne(cascade=CascadeType.ALL)
+	/*@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "Offer_id")
 	@JsonBackReference
-	private MstOffer offer;
+	private MstOffer offer;*/
 
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-	//@JoinColumn(name = "offer_detail_id")
+	@JoinColumn(name = "offer_detail_id")
 	private List<OfferItemMenu> offer_item;
 
 	public Long getOffer_detail_id() {
@@ -176,13 +174,13 @@ public class OfferDetail {
 		this.is_active = is_active;
 	}
 
-	public MstOffer getOffer() {
+	/*public MstOffer getOffer() {
 		return offer;
 	}
 
 	public void setOffer(MstOffer offer) {
 		this.offer = offer;
-	}
+	}*/
 
 	public List<OfferItemMenu> getOffer_item() {
 		return offer_item;

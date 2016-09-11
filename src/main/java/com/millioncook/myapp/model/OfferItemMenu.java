@@ -5,11 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "offer_item_menu")
@@ -22,10 +18,10 @@ public class OfferItemMenu {
 	private String item_desc;
 	private boolean is_active;
 
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name = "offer_detail_id")
 	@JsonBackReference
-	private OfferDetail offer_detail;
+	private OfferDetail offer_detail;*/
 
 	public Long getItem_id() {
 		return item_id;
@@ -51,12 +47,12 @@ public class OfferItemMenu {
 		this.is_active = is_active;
 	}
 
-	public OfferDetail getOffer_detail() {
+	/*public OfferDetail getOffer_detail() {
 		return offer_detail;
 	}
 
 	public void setOffer_detail(OfferDetail offer_detail) {
 		this.offer_detail = offer_detail;
-	}
+	}*/
 
 }

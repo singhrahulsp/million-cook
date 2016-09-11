@@ -46,6 +46,7 @@ public class MstOffer {
 	private Boolean is_active;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="offer_id")
 	private List<OfferDetail> offer_detail;
 
 	public Long getOffer_id() {

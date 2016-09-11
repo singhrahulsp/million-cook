@@ -60,10 +60,10 @@ public class User {
 	@Column(name = "Is_Active")
 	private Boolean is_active;
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
 	private UserDetail user_details;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
 	private List<UserAddress> user_address;
 
 	public String getMobile_no() {
